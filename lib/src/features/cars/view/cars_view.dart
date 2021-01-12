@@ -30,7 +30,7 @@ class CarsView extends StatelessWidget {
             } else if (state is CarsLoading) {
               return buildLoading();
             } else if (state is CarsLoaded) {
-              return buildColumnWithData(state.cars);
+              return _CarsList(cars: state.cars);
             } else {
               return buildInitialInput();
             }
@@ -49,17 +49,23 @@ class CarsView extends StatelessWidget {
       child: CircularProgressIndicator(),
     );
   }
+}
 
-  ListView buildColumnWithData(List<Car> cars) {
-    return ListView(
-      children: cars
-          .map(
-            (car) => ListTile(
-              title: Text(car.carModel),
-              subtitle: Text(car.carModelYear),
-            ),
-          )
-          .toList(),
+class _CarsList extends StatelessWidget {
+  final List<Car> cars;
+
+  const _CarsList({Key key, this.cars}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: cars.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(cars[index].carModel),
+          subtitle: Text(cars[index].carModelYear),
+        );
+      },
     );
   }
 }
