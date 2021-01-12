@@ -16,8 +16,8 @@ class CarsCubit extends Cubit<CarsState> {
   Future<void> getCars() async {
     try {
       emit(CarsLoading());
-      final weather = await _carRepository.getAllCars();
-      emit(CarsLoaded(weather));
+      final cars = await _carRepository.getAllCars();
+      emit(CarsLoaded(cars));
     } on Failure catch (f) {
       emit(CarsError(f.message));
     }
