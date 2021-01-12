@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import '../cubit/users_cubit.dart';
 import '../model/user.dart';
 import '../repository/user_repository.dart';
+import 'user_detail_view.dart';
 
 class UsersView extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class UsersView extends StatelessWidget {
       create: (context) => UsersCubit(UserRepository(Client()))..getUsers(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Cars'),
+          title: Text('User'),
         ),
         body: BlocConsumer<UsersCubit, UsersState>(
           listener: (context, state) {
@@ -31,7 +32,7 @@ class UsersView extends StatelessWidget {
             } else if (state is UsersLoading) {
               return buildLoading();
             } else if (state is UsersLoaded) {
-              return buildColumnWithData(state.users);
+              return _UsersList(users: state.users);
             } else {
               return buildInitialInput();
             }
@@ -50,17 +51,28 @@ class UsersView extends StatelessWidget {
       child: CircularProgressIndicator(),
     );
   }
+}
 
-  ListView buildColumnWithData(List<User> users) {
-    return ListView(
-      children: users
-          .map(
-            (user) => ListTile(
-              title: Text(user.fullName),
-              subtitle: Text(user.gender),
+class _UsersList extends StatelessWidget {
+  final List<User> users;
+
+  const _UsersList({Key key, this.users}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: users.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(users[index].fullName),
+          subtitle: Text(users[index].gender),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => UserDetailView(user: users[index]),
             ),
-          )
-          .toList(),
+          ),
+        );
+      },
     );
   }
 }
