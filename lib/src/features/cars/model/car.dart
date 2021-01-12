@@ -11,7 +11,7 @@ class Car {
   final String jobTitle;
   final String bio;
 
-  Car(
+  Car({
     this.id,
     this.firstName,
     this.lastName,
@@ -23,25 +23,25 @@ class Car {
     this.jobTitle,
     this.gender,
     this.bio,
-  );
+  });
 
   Car.fromList(List<String> items)
       : this(
-          int.parse(items[0]),
-          items[1],
-          items[2],
-          items[3],
-          items[4],
-          items[5],
-          items[6],
-          items[7],
-          items[8],
-          items[9],
-          items[10],
+          id: int.parse(items[0]),
+          firstName: items[1],
+          lastName: items[2],
+          email: items[3],
+          country: items[4],
+          carModel: items[5],
+          carModelYear: items[6],
+          carColor: items[7],
+          jobTitle: items[8],
+          gender: items[9],
+          bio: items[10],
         );
 
   @override
   String toString() {
-    return 'FoodCrop{id: $id, firstName: $firstName, lastName: $lastName, email: $email, country: $country, carModel: $carModel, carModelYear: $carModelYear, carColor: $carColor, jobTitle: $jobTitle, gender: $gender, bio: $bio}';
+    return 'Car{id: $id, firstName: $firstName, lastName: $lastName, email: $email, country: $country, carModel: $carModel, carModelYear: $carModelYear, carColor: $carColor, jobTitle: $jobTitle, gender: $gender, bio: $bio}';
   }
 }
