@@ -13,7 +13,7 @@ class UsersCubit extends Cubit<UsersState> {
 
   UsersCubit(this._userRepository) : super(UsersInitial());
 
-  Future<void> getCars() async {
+  Future<void> getUsers() async {
     try {
       emit(UsersLoading());
       final user = await _userRepository.getAllUser();
