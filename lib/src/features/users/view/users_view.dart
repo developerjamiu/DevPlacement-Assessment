@@ -56,10 +56,15 @@ class _UsersList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: BouncingScrollPhysics(),
       itemCount: users.length,
       itemBuilder: (context, index) {
         return ListTile(
           contentPadding: const EdgeInsets.all(0),
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(users[index].avatar),
+          ),
           title: Text(users[index].fullName),
           subtitle: Text(users[index].gender),
           onTap: () => Navigator.of(context).push(
