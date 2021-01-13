@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:meta/meta.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../contents/utilities/failure.dart';
-import '../../../contents/utilities/num_utils.dart';
 import '../model/car.dart';
 import '../repository/car_repository.dart';
 
