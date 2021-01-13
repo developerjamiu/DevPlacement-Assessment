@@ -1,11 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import '../../../contents/utilities/status.dart';
+
+import 'cars_cubit.dart';
 
 part 'filtered_cars_state.dart';
 
 class FilteredCarsCubit extends Cubit<FilteredCarsState> {
-  FilteredCarsCubit() : super(const FilteredCarsState());
+  FilteredCarsCubit(this.carsCubit) : super(const FilteredCarsState());
+
+  final CarsCubit carsCubit;
 
   // Local Variables
   final _startYearController = TextEditingController();
@@ -44,14 +49,19 @@ class FilteredCarsCubit extends Cubit<FilteredCarsState> {
     emit(FilteredCarsState());
   }
 
-  // Future<void> logIn() async {
-  //   if (!_formKey.currentState.validate()) return;
-  //   emit(state.copyWith(status: AuthStatus.submissionInProgress));
-  //   try {
-  //     await Future.delayed(Duration(seconds: 3));
-  //     emit(state.copyWith(status: AuthStatus.submissionSuccess));
-  //   } on Exception {
-  //     emit(state.copyWith(status: AuthStatus.submissionFailure));
-  //   }
-  // }
+  Future<void> filterCars() async {
+    emit(state.copyWith(status: Status.loading));
+
+    print(state.startYear);
+    carsCubit.filterCars(
+      startYear: state.startYear,
+      endYear: state.endYear,
+      colors: state.colors,
+      countries: state.countries,
+      gender: state.gender == 'All' ? null : state.gender,
+    );
+
+    emit(state.copyWith(status: Status.back));
+    emit(state.copyWith(status: Status.initial));
+  }
 }

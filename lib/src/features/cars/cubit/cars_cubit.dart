@@ -16,7 +16,8 @@ class CarsCubit extends Cubit<CarsState> {
   CarsCubit(this._carRepository) : super(CarsInitial());
 
   void downloadCarOnwerFile() async {
-    const url = 'https://drive.google.com/file/d/1giBv3pK6qbOPo0Y02H-wjT9ULPksfBCm/view';
+    const url =
+        'https://drive.google.com/file/d/1giBv3pK6qbOPo0Y02H-wjT9ULPksfBCm/view';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -39,9 +40,8 @@ class CarsCubit extends Cubit<CarsState> {
       if (NumUtils.isNumericUsingTryParse(car.carModelYear)) {
         int year = int.parse(car.carModelYear);
 
-        bool dateCondition = (startYear == null ||
-                endYear == null ||
-                (year >= startYear && year <= endYear)) &&
+        bool dateCondition = (startYear == null || year >= startYear) &&
+            (endYear == null || year <= endYear) &&
             (gender == null || gender == car.gender) &&
             (countries == null ||
                 countries.isEmpty ||
@@ -50,7 +50,7 @@ class CarsCubit extends Cubit<CarsState> {
         if (dateCondition) filteredCars.add(car);
       }
     });
-
+    print(filteredCars.length);
     emit(CarsLoaded(filteredCars));
   }
 

@@ -1,7 +1,5 @@
 part of 'filtered_cars_cubit.dart';
 
-enum Status { initial, loading, loaded, error }
-
 class FilteredCarsState extends Equatable {
   const FilteredCarsState({
     this.startYear,
@@ -9,7 +7,7 @@ class FilteredCarsState extends Equatable {
     this.gender,
     this.colors,
     this.countries,
-    this.status = Status.initial,
+    this.status,
   });
 
   final int startYear;

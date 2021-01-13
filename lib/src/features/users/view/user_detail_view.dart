@@ -28,10 +28,13 @@ class UserDetailView extends StatelessWidget {
                 child: ListView(
                   physics: BouncingScrollPhysics(),
                   children: [
-                    Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.network(user.avatar),
+                    Hero(
+                      tag: 'avatar${user.id}',
+                      child: Center(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.network(user.avatar),
+                        ),
                       ),
                     ),
                     SizedBox(height: 16),
@@ -87,11 +90,8 @@ class UserDetailView extends StatelessWidget {
   Widget appBar() {
     return Builder(
       builder: (context) => GestureDetector(
+        child: Icon(Icons.close),
         onTap: () => Navigator.of(context).pop(),
-        child: Text(
-          'Back',
-          style: AppStyles.heading4,
-        ),
       ),
     );
   }

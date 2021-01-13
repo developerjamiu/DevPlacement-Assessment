@@ -78,9 +78,12 @@ class _UsersList extends StatelessWidget {
       itemBuilder: (context, index) {
         return ListTile(
           contentPadding: const EdgeInsets.all(0),
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(users[index].avatar),
+          leading: Hero(
+            tag: 'avatar${users[index].id}',
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(users[index].avatar),
+            ),
           ),
           title: Text(users[index].fullName),
           subtitle: Text(users[index].gender),
