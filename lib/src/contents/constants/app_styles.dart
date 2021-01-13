@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jamiu_okanlawon/src/contents/constants/app_colors.dart';
+
+import 'app_colors.dart';
 
 class AppStyles {
   static const heading4 = TextStyle(
@@ -10,6 +11,11 @@ class AppStyles {
 
   static const heading6 = TextStyle(
     fontSize: 30,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const bodyText1 = TextStyle(
+    fontSize: 16,
     fontWeight: FontWeight.w700,
   );
 }
