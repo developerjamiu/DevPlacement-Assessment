@@ -4,6 +4,7 @@ import 'package:ext_storage/ext_storage.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../../contents/utilities/failure.dart';
+import '../../../contents/utilities/num_utils.dart';
 import '../model/car.dart';
 
 class CarRepository {
@@ -35,5 +36,32 @@ class CarRepository {
       throw Failure(
           'The Car Onwers file cannot be found. Please download and save the csv in your file manager in a folder named owners');
     }
+  }
+
+  List<Car> filterCars(
+    List<Car> cars, {
+    int startYear,
+    int endYear,
+    String gender,
+    List<String> countries,
+    List<String> colors,
+  }) {
+    List<Car> filteredCars = [];
+
+    cars.forEach((car) {
+      if (NumUtils.isNumericUsingTryParse(car.carModelYear)) {
+        int year = int.parse(car.carModelYear);
+
+        bool dateCondition = (startYear == null || year >= startYear) &&
+            (endYear == null || year <= endYear) &&
+            (gender == null || gender == car.gender) &&
+            (countries == null ||
+                countries.isEmpty ||
+                countries.contains(car.country)) &&
+            (colors == null || colors.isEmpty || colors.contains(car.carColor));
+        if (dateCondition) filteredCars.add(car);
+      }
+    });
+    return filteredCars;
   }
 }

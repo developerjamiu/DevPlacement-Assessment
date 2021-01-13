@@ -33,24 +33,16 @@ class CarsCubit extends Cubit<CarsState> {
     List<String> colors,
   }) async {
     emit(CarsLoading());
+
     final cars = await _carRepository.getAllCars();
-    List<Car> filteredCars = [];
 
-    cars.forEach((car) {
-      if (NumUtils.isNumericUsingTryParse(car.carModelYear)) {
-        int year = int.parse(car.carModelYear);
+    final filteredCars = _carRepository.filterCars(cars,
+        startYear: startYear,
+        endYear: endYear,
+        colors: colors,
+        countries: countries,
+        gender: gender);
 
-        bool dateCondition = (startYear == null || year >= startYear) &&
-            (endYear == null || year <= endYear) &&
-            (gender == null || gender == car.gender) &&
-            (countries == null ||
-                countries.isEmpty ||
-                countries.contains(car.country)) &&
-            (colors == null || colors.isEmpty || colors.contains(car.carColor));
-        if (dateCondition) filteredCars.add(car);
-      }
-    });
-    print(filteredCars.length);
     emit(CarsLoaded(filteredCars));
   }
 

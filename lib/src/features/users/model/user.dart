@@ -29,6 +29,16 @@ class User {
         countries: json['countries'].cast<String>(),
       );
 
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "avatar": avatar,
+        "fullName": fullName,
+        "createdAt": createdAt.toString(),
+        "gender": gender,
+        "colors": colors,
+        "countries": countries,
+      };
+
   @override
   String toString() {
     return 'User{id: $id, avatar: $avatar, fullName: $fullName, createdAt: $createdAt, gender: $gender, countriesLength: ${countries.length}, colors: ${colors.length}';
