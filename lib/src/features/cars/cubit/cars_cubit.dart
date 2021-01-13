@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:meta/meta.dart';
 
 import '../../../contents/utilities/failure.dart';
@@ -13,6 +14,15 @@ class CarsCubit extends Cubit<CarsState> {
   final CarRepository _carRepository;
 
   CarsCubit(this._carRepository) : super(CarsInitial());
+
+  void downloadCarOnwerFile() async {
+    const url = 'https://drive.google.com/file/d/1giBv3pK6qbOPo0Y02H-wjT9ULPksfBCm/view';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      emit(CarsError('Something went wrong with download. Please try again'));
+    }
+  }
 
   void filterCars({
     int startYear,

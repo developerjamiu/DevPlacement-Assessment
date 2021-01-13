@@ -61,7 +61,7 @@ class CarsView extends StatelessWidget {
         children: [
           Text(message),
           RaisedButton(
-            onPressed: cubit.getCars,
+            onPressed: cubit.downloadCarOnwerFile,
             child: Text('Retry'),
           ),
         ],

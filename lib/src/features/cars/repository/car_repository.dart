@@ -17,7 +17,7 @@ class CarRepository {
       final _appDocumentDirectory =
           await ExtStorage.getExternalStorageDirectory();
 
-      final file = File("$_appDocumentDirectory/owners/car_ownsers_data.csv");
+      final file = File("$_appDocumentDirectory/owners/car_ownsers_dat.csv");
 
       List<String> lines = file.readAsLinesSync();
 
@@ -27,8 +27,9 @@ class CarRepository {
       for (var line in lines) cars.add(Car.fromList(line.split(',')));
 
       return cars;
-    } on Exception catch (ex) {
-      throw Failure(ex.toString());
+    } on FileSystemException {
+      throw Failure(
+          'The Car Onwers file cannot be found. Please download and save the csv in your file manager in a folder called owners');
     }
   }
 }
