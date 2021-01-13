@@ -51,7 +51,7 @@ class UserDetailView extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 32),
-                    Text('Colors'),
+                    Text('Colors', style: AppStyles.bodyText1),
                     SizedBox(height: 8),
                     Divider(color: AppColors.accent, thickness: 2),
                     user.colors.isEmpty
@@ -63,7 +63,7 @@ class UserDetailView extends StatelessWidget {
                           )
                         : buildUserInfoList(user.colors),
                     SizedBox(height: 16),
-                    Text('Countries'),
+                    Text('Countries', style: AppStyles.bodyText1),
                     SizedBox(height: 8),
                     Divider(color: AppColors.accent, thickness: 2),
                     user.countries.isEmpty

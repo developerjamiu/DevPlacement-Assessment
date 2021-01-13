@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -15,7 +16,8 @@ class UserRepository {
     List<User> users;
     try {
       final response = await client
-          .get("https://android-json-test-api.herokuapp.com/accounts");
+          .get("https://android-json-test-api.herokuapp.com/accounts")
+          .timeout(Duration(seconds: 20));
 
       if (response.statusCode == 200) {
         dynamic usersResponse = json.decode(response.body);
@@ -25,6 +27,8 @@ class UserRepository {
       } else {
         _response(response);
       }
+
+      return users;
     } on SocketException {
       throw Failure(
           'No Internet connection. Please check you internet connection');
@@ -32,8 +36,12 @@ class UserRepository {
       throw Failure("Something went wrong");
     } on FormatException {
       throw Failure("Bad response format.");
+    } on TimeoutException {
+      throw Failure(
+          'No Internet connection. \nPlease check you internet connection and retry');
+    } catch (ex) {
+      throw Failure(ex.toString());
     }
-    return users;
   }
 
   void _response(http.Response response) {
