@@ -125,20 +125,42 @@ class CarDetailDialog extends StatelessWidget {
             ),
             Divider(color: AppColors.accent, thickness: 2),
             SizedBox(height: 8),
-            Text('Model: ${car.carColor}'),
-            Text('Year: ${car.carModelYear}'),
-            SizedBox(height: 16),
+            CarTile(title: 'Model', value: car.carModel),
+            CarTile(title: 'Color', value: car.carColor),
+            CarTile(title: 'Year', value: car.carModelYear),
+            SizedBox(height: 24),
             Text('Onwer Info', style: AppStyles.bodyText1),
             Divider(color: AppColors.accent, thickness: 2),
             SizedBox(height: 8),
-            Text('Name: ${car.firstName} ${car.lastName}'),
-            Text('Gender: ${car.gender}'),
-            Text('Email: ${car.email}'),
-            Text('Occupation: ${car.jobTitle}'),
-            Text('Country: ${car.country}'),
-            Text('Bio ${car.bio}'),
+            CarTile(title: 'Name', value: '${car.firstName} ${car.lastName}'),
+            CarTile(title: 'Gender', value: car.gender),
+            CarTile(title: 'Email', value: car.email),
+            CarTile(title: 'Occupation', value: car.jobTitle),
+            CarTile(title: 'Country', value: car.country),
+            CarTile(title: 'Bio', value: car.bio),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CarTile extends StatelessWidget {
+  final String title;
+  final String value;
+
+  const CarTile({Key key, this.title, this.value}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, style: AppStyles.bodyText1),
+          Text(value),
+        ],
       ),
     );
   }
