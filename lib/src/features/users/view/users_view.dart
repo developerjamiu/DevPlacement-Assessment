@@ -12,32 +12,27 @@ class UsersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => UsersCubit(UserRepository(Client()))..getUsers(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('User'),
-        ),
-        body: BlocConsumer<UsersCubit, UsersState>(
-          listener: (context, state) {
-            if (state is UsersError) {
-              Scaffold.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message),
-                ),
-              );
-            }
-          },
-          builder: (context, state) {
-            if (state is UsersInitial) {
-              return buildInitialInput();
-            } else if (state is UsersLoading) {
-              return buildLoading();
-            } else if (state is UsersLoaded) {
-              return _UsersList(users: state.users);
-            } else {
-              return buildInitialInput();
-            }
-          },
-        ),
+      child: BlocConsumer<UsersCubit, UsersState>(
+        listener: (context, state) {
+          if (state is UsersError) {
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is UsersInitial) {
+            return buildInitialInput();
+          } else if (state is UsersLoading) {
+            return buildLoading();
+          } else if (state is UsersLoaded) {
+            return _UsersList(users: state.users);
+          } else {
+            return buildInitialInput();
+          }
+        },
       ),
     );
   }
@@ -64,6 +59,7 @@ class _UsersList extends StatelessWidget {
       itemCount: users.length,
       itemBuilder: (context, index) {
         return ListTile(
+          contentPadding: const EdgeInsets.all(0),
           title: Text(users[index].fullName),
           subtitle: Text(users[index].gender),
           onTap: () => Navigator.of(context).push(

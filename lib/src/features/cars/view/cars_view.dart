@@ -10,36 +10,21 @@ class CarsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CarsCubit(CarRepository())..getCars(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Cars'),
-        ),
-        body: BlocConsumer<CarsCubit, CarsState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            final _cubit = context.watch<CarsCubit>();
+      child: BlocConsumer<CarsCubit, CarsState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          final _cubit = context.watch<CarsCubit>();
 
-            if (state is CarsError) {
-              return buildErrorState(state.message, _cubit);
-            } else if (state is CarsLoading) {
-              return buildLoading();
-            } else if (state is CarsLoaded) {
-              return Column(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.filter),
-                    onPressed: () => _cubit.filterCars(colors: null),
-                  ),
-                  Expanded(
-                    child: _CarsList(cars: state.cars),
-                  ),
-                ],
-              );
-            } else {
-              return buildInitialInput();
-            }
-          },
-        ),
+          if (state is CarsError) {
+            return buildErrorState(state.message, _cubit);
+          } else if (state is CarsLoading) {
+            return buildLoading();
+          } else if (state is CarsLoaded) {
+            return _CarsList(cars: state.cars);
+          } else {
+            return buildInitialInput();
+          }
+        },
       ),
     );
   }
@@ -84,6 +69,7 @@ class _CarsList extends StatelessWidget {
           title: Text(cars[index].carModel),
           subtitle: Text(cars[index].carModelYear),
           trailing: Text(cars[index].carColor),
+          contentPadding: const EdgeInsets.all(0),
         );
       },
     );
