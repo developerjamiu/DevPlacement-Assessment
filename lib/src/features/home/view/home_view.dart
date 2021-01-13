@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
+import 'package:jamiu_okanlawon/src/features/cars/cubit/cars_cubit.dart';
+import 'package:jamiu_okanlawon/src/features/cars/repository/car_repository.dart';
+import 'package:jamiu_okanlawon/src/features/users/cubit/users_cubit.dart';
+import 'package:jamiu_okanlawon/src/features/users/repository/user_repository.dart';
 
 import '../../../shared/widgets/app_tab_bar.dart';
 import '../../cars/view/cars_view.dart';
@@ -25,19 +31,29 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            children: [
-              AppTabBar(
-                onChanged: onPageChanged,
-                items: ['Cars', 'Users'],
-              ),
-              SizedBox(height: 24),
-              Expanded(child: pages[currentPage]),
-            ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CarsCubit>(
+          create: (context) => CarsCubit(CarRepository())..getCars(),
+        ),
+        BlocProvider<UsersCubit>(
+          create: (context) => UsersCubit(UserRepository(Client()))..getUsers(),
+        ),
+      ],
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              children: [
+                AppTabBar(
+                  onChanged: onPageChanged,
+                  items: ['Cars', 'Users'],
+                ),
+                SizedBox(height: 24),
+                Expanded(child: pages[currentPage]),
+              ],
+            ),
           ),
         ),
       ),

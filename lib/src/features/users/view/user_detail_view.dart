@@ -50,7 +50,7 @@ class UserDetailView extends StatelessWidget {
                       'Created on: ${DateFormat.yMMMEd().format(user.createdAt)}',
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 16),
+                    SizedBox(height: 32),
                     Text('Colors'),
                     SizedBox(height: 8),
                     Divider(color: AppColors.accent, thickness: 2),
