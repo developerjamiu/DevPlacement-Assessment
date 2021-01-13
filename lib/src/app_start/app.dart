@@ -7,6 +7,9 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Jamiu Okanlawon',
       home: HomeView(),
+      theme: ThemeData(
+        buttonTheme: ButtonThemeData(height: 48),
+      ),
     );
   }
 }

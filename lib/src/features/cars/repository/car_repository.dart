@@ -7,16 +7,20 @@ import '../../../contents/utilities/failure.dart';
 import '../model/car.dart';
 
 class CarRepository {
+  final Permission permission;
+
+  CarRepository(this.permission);
+
   Future<List<Car>> getAllCars() async {
     try {
-      var _status = await Permission.storage.status;
+      var _status = await permission.status;
       if (!_status.isGranted) {
-        await Permission.storage.request();
+        await permission.request();
       }
 
       final _appDocumentDirectory =
           await ExtStorage.getExternalStorageDirectory();
-
+      print("$_appDocumentDirectory/owners/car_ownsers_data.csv");
       final file = File("$_appDocumentDirectory/owners/car_ownsers_data.csv");
 
       List<String> lines = file.readAsLinesSync();

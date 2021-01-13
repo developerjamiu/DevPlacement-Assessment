@@ -109,7 +109,7 @@ class UserDetailView extends StatelessWidget {
               child: Text(item),
               decoration: BoxDecoration(
                 color: AppColors.accent,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(32),
               ),
             ),
           )
