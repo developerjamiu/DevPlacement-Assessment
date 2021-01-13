@@ -20,8 +20,8 @@ class Car {
     this.carModel,
     this.carModelYear,
     this.carColor,
-    this.jobTitle,
     this.gender,
+    this.jobTitle,
     this.bio,
   });
 
@@ -35,8 +35,8 @@ class Car {
           carModel: items[5],
           carModelYear: items[6],
           carColor: items[7],
-          jobTitle: items[8],
-          gender: items[9],
+          gender: items[8],
+          jobTitle: items[9],
           bio: items[10],
         );
 

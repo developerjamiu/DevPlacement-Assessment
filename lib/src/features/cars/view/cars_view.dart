@@ -15,22 +15,26 @@ class CarsView extends StatelessWidget {
           title: Text('Cars'),
         ),
         body: BlocConsumer<CarsCubit, CarsState>(
-          listener: (context, state) {
-            if (state is CarsError) {
-              Scaffold.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message),
-                ),
-              );
-            }
-          },
+          listener: (context, state) {},
           builder: (context, state) {
-            if (state is CarsInitial) {
-              return buildInitialInput();
+            final _cubit = context.watch<CarsCubit>();
+
+            if (state is CarsError) {
+              return buildErrorState(state.message, _cubit);
             } else if (state is CarsLoading) {
               return buildLoading();
             } else if (state is CarsLoaded) {
-              return _CarsList(cars: state.cars);
+              return Column(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.filter),
+                    onPressed: () => _cubit.filterCars(colors: null),
+                  ),
+                  Expanded(
+                    child: _CarsList(cars: state.cars),
+                  ),
+                ],
+              );
             } else {
               return buildInitialInput();
             }
@@ -49,6 +53,21 @@ class CarsView extends StatelessWidget {
       child: CircularProgressIndicator(),
     );
   }
+
+  Widget buildErrorState(String message, CarsCubit cubit) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(message),
+          RaisedButton(
+            onPressed: cubit.getCars,
+            child: Text('Retry'),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _CarsList extends StatelessWidget {
@@ -64,6 +83,7 @@ class _CarsList extends StatelessWidget {
         return ListTile(
           title: Text(cars[index].carModel),
           subtitle: Text(cars[index].carModelYear),
+          trailing: Text(cars[index].carColor),
         );
       },
     );
