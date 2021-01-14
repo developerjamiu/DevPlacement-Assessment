@@ -1,3 +1,5 @@
+/// This contains lists used the the [FilterCarsView] s
+
 const countriesList = <String>[
   'Thailand',
   'France',

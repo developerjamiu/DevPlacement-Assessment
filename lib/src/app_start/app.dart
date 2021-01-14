@@ -13,6 +13,12 @@ import '../features/users/cubit/users_cubit.dart';
 import '../features/users/repository/user_repository.dart';
 
 class App extends StatelessWidget {
+  /// This widget contains the material app
+  ///
+  /// Here instances of the [CarsCubit], [UsersCubit] are provided to other parts...
+  /// ... of the widget tree
+  ///
+  /// The [FilteredCarsCubit] is also provider while depending on [CarsCubit]
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

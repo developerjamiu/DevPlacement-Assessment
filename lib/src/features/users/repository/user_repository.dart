@@ -7,6 +7,9 @@ import 'package:http/http.dart' as http;
 import '../../../contents/utilities/failure.dart';
 import '../model/user.dart';
 
+/// User repository provides user data to the [UserCubit] to display on the UI
+///
+/// It accepts the [Client] through a constructor for easy testing
 class UserRepository {
   final http.Client client;
 
@@ -17,7 +20,7 @@ class UserRepository {
     try {
       final response = await client
           .get("https://android-json-test-api.herokuapp.com/accounts")
-          .timeout(Duration(seconds: 20));
+          .timeout(Duration(seconds: 25));
 
       if (response.statusCode == 200) {
         dynamic usersResponse = json.decode(response.body);

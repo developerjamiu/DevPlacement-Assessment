@@ -16,12 +16,19 @@ class CarRepository {
 
   CarRepository(this._permissionHandler, this._externalStorage, this._csvFile);
 
+  /// Car repository provides user data to the [CarCubit] to display on the UI
+  ///
+  /// It accepts the [PermissionHandler], [ExternalStorage] and [CSVFile]...
+  /// ... through a constructor for easy testing
   Future<List<Car>> getAllCars() async {
     List<Car> cars;
 
     try {
+      // Requesting permissions
       var _status = await _permissionHandler.requestStoragePermission();
 
+      // Switch status checks the [Permissionstatus] and return [true] when successful
+      // ... or throw and error otherwise
       if (_switchStatus(_status)) {
         final _appDocumentDirectory =
             await _externalStorage.getExternalStorageDirectory();
@@ -46,6 +53,11 @@ class CarRepository {
     }
   }
 
+  /// This is used for filtering cars
+  ///
+  /// It accepts a list of [cars] as the only required parameter
+  /// All other parameters can be null as they would be ignored if they are
+  /// It returns a list of filtered cars
   List<Car> filterCars(
     List<Car> cars, {
     int startYear,

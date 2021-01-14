@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 
+/// This contains the Styles [Text] used in the app
+///
+/// This becomes very useful when I want add theming
 class AppStyles {
   static const heading4 = TextStyle(
     fontSize: 32,

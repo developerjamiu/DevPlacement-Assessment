@@ -19,6 +19,7 @@ class User {
     this.gender,
   });
 
+  /// Default values added to fromJson to avoid unexpected from the API object
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json['id'] ?? '',
         avatar: json['avatar'] ??
