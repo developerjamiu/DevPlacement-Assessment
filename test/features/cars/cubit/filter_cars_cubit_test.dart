@@ -26,7 +26,7 @@ void main() {
       final expected = <FilteredCarsState>[
         FilteredCarsState(status: Status.loading),
         FilteredCarsState(status: Status.back),
-        FilteredCarsState(status: Status.initial),
+        FilteredCarsState(status: Status.loaded),
       ];
 
       expectLater(filteredCarsCubit, emitsInOrder(expected));
