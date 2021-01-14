@@ -1,4 +1,6 @@
+/// This class holds number utilities
 class NumUtils {
+  /// This method checks whether a [string] is parsable to [integer]
   static bool isNumericUsingTryParse(String string) {
     // Null or empty string is not a number
     if (string == null || string.isEmpty) {

@@ -1,16 +1,30 @@
-# jamiu_okanlawon
+# Jamiu Okanlawon
 
-A new Flutter project.
+An Application showing a list of cars by cars onwers in the united states
 
-## Getting Started
+## Technology used
 
-This project is a starting point for a Flutter application.
+The application is built with Flutter - A Cross Platform Mobile Technology
 
-A few resources to get you started if this is your first Flutter project:
+## To test (Manually)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Install Flutter
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For Windows: https://flutter.dev/docs/get-started/install/windows
+For Mac: https://flutter.dev/docs/get-started/install/macos
+For Linux: https://flutter.dev/docs/get-started/install/linux
+
+## Clone Project
+
+With ssh: git@github.com:developerjamiu/Jamiu-Okanlawon.git
+With https: https://github.com/developerjamiu/Jamiu-Okanlawon.git
+
+## Fix Files (Download missing files)
+
+Dependencies: run 'flutter pub get' in the terminal in the project root
+GitIgnore: run flutter create . in the project root
+
+## Configure (Physical Device)
+
+Configure physical device for testing here
+https://developer.android.com/studio/debug/dev-options

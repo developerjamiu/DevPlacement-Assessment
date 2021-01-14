@@ -22,10 +22,11 @@ class CarsLoaded extends CarsState {
 }
 
 class CarsError extends CarsState {
-  const CarsError(this.message);
+  const CarsError(this.message, {this.type});
 
   final String message;
+  final int type;
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message, type];
 }

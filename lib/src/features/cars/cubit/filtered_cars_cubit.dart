@@ -52,8 +52,7 @@ class FilteredCarsCubit extends Cubit<FilteredCarsState> {
   Future<void> filterCars() async {
     emit(state.copyWith(status: Status.loading));
 
-    print(state.status);
-    print(state.startYear);
+    await Future.delayed(Duration(seconds: 1));
     carsCubit.filterCars(
       startYear: state.startYear,
       endYear: state.endYear,
@@ -63,6 +62,6 @@ class FilteredCarsCubit extends Cubit<FilteredCarsState> {
     );
 
     emit(state.copyWith(status: Status.back));
-    emit(state.copyWith(status: Status.initial));
+    emit(state.copyWith(status: Status.loaded));
   }
 }

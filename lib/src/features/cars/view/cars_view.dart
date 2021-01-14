@@ -26,7 +26,7 @@ class CarsView extends StatelessWidget {
         final _cubit = context.watch<CarsCubit>();
 
         if (state is CarsError) {
-          return buildErrorState(state.message, _cubit);
+          return buildErrorState(state, _cubit);
         } else if (state is CarsLoading) {
           return buildLoading();
         } else if (state is CarsLoaded) {
@@ -48,7 +48,7 @@ class CarsView extends StatelessWidget {
     );
   }
 
-  Widget buildErrorState(String message, CarsCubit cubit) {
+  Widget buildErrorState(CarsError state, CarsCubit cubit) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -60,15 +60,20 @@ class CarsView extends StatelessWidget {
           ),
           SizedBox(height: 16),
           Text(
-            message,
+            state.message,
             style: AppStyles.bodyText1,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 16),
-          RaisedButton(
-            onPressed: cubit.downloadCarOnwerFile,
-            child: Text('Download File'),
-          ),
+          state.type == 0
+              ? RaisedButton(
+                  onPressed: cubit.downloadCarOnwerFile,
+                  child: Text('DOWNLOAD FILE'),
+                )
+              : RaisedButton(
+                  onPressed: cubit.getCars,
+                  child: Text('RETRY'),
+                ),
         ],
       ),
     );

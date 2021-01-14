@@ -126,7 +126,7 @@ class FilterCarsView extends StatelessWidget {
                         buildOptionsList(state.countries),
                         SizedBox(height: 64.0),
                         state.status.isLoading
-                            ? CircularProgressIndicator()
+                            ? Center(child: CircularProgressIndicator())
                             : RaisedButton(
                                 onPressed: _cubit.filterCars,
                                 child: Text('FILTER'),
