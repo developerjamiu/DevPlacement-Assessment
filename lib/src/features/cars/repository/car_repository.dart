@@ -46,22 +46,28 @@ class CarRepository {
     List<String> countries,
     List<String> colors,
   }) {
-    List<Car> filteredCars = [];
+    try {
+      List<Car> filteredCars = [];
 
-    cars.forEach((car) {
-      if (NumUtils.isNumericUsingTryParse(car.carModelYear)) {
-        int year = int.parse(car.carModelYear);
+      cars.forEach((car) {
+        if (NumUtils.isNumericUsingTryParse(car.carModelYear)) {
+          int year = int.parse(car.carModelYear);
 
-        bool dateCondition = (startYear == null || year >= startYear) &&
-            (endYear == null || year <= endYear) &&
-            (gender == null || gender == car.gender) &&
-            (countries == null ||
-                countries.isEmpty ||
-                countries.contains(car.country)) &&
-            (colors == null || colors.isEmpty || colors.contains(car.carColor));
-        if (dateCondition) filteredCars.add(car);
-      }
-    });
-    return filteredCars;
+          bool dateCondition = (startYear == null || year >= startYear) &&
+              (endYear == null || year <= endYear) &&
+              (gender == null || gender == car.gender) &&
+              (countries == null ||
+                  countries.isEmpty ||
+                  countries.contains(car.country)) &&
+              (colors == null ||
+                  colors.isEmpty ||
+                  colors.contains(car.carColor));
+          if (dateCondition) filteredCars.add(car);
+        }
+      });
+      return filteredCars;
+    } catch (ex) {
+      throw Failure(ex.toString());
+    }
   }
 }

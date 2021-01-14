@@ -31,18 +31,22 @@ class CarsCubit extends Cubit<CarsState> {
     List<String> countries,
     List<String> colors,
   }) async {
-    emit(CarsLoading());
+    try {
+      emit(CarsLoading());
 
-    final cars = await _carRepository.getAllCars();
+      final cars = await _carRepository.getAllCars();
 
-    final filteredCars = _carRepository.filterCars(cars,
-        startYear: startYear,
-        endYear: endYear,
-        colors: colors,
-        countries: countries,
-        gender: gender);
+      final filteredCars = _carRepository.filterCars(cars,
+          startYear: startYear,
+          endYear: endYear,
+          colors: colors,
+          countries: countries,
+          gender: gender);
 
-    emit(CarsLoaded(filteredCars));
+      emit(CarsLoaded(filteredCars));
+    } on Failure catch (f) {
+      emit(CarsError(f.message));
+    }
   }
 
   Future<void> getCars() async {

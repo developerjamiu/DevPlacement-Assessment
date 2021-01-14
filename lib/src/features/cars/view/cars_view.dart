@@ -10,7 +10,18 @@ class CarsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CarsCubit, CarsState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is CarsLoaded) {
+          if (state.cars.isEmpty) {
+            Scaffold.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                const SnackBar(
+                    content: Text('There\'s no car with the selected filters')),
+              );
+          }
+        }
+      },
       builder: (context, state) {
         final _cubit = context.watch<CarsCubit>();
 
