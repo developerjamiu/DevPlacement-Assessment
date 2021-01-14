@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// This contains the colors used in the app
+/// This contains the [colors] used in the app
 ///
 /// This becomes very useful when I want add theming
 class AppColors {
