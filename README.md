@@ -2,7 +2,11 @@
 
 An Application showing a list of cars by cars onwers in the united states
 
-## To test
+## Technology used
+
+The application is built with Flutter - A Cross Platform Mobile Technology
+
+## To test (Manually)
 
 ## Install Flutter
 
@@ -19,3 +23,8 @@ With https: https://github.com/developerjamiu/Jamiu-Okanlawon.git
 
 Dependencies: run 'flutter pub get' in the terminal in the project root
 GitIgnore: run flutter create . in the project root
+
+## Configure (Physical Device)
+
+Configure physical device for testing here
+https://developer.android.com/studio/debug/dev-options
