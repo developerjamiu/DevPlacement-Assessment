@@ -21,6 +21,13 @@ class FilterCarsView extends StatelessWidget {
               if (state.status == Status.back) {
                 Navigator.of(context).pop();
               }
+              if (state.status == Status.loaded) {
+                Scaffold.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    const SnackBar(content: Text('Filter Applied')),
+                  );
+              }
             },
             builder: (context, state) {
               final _cubit = context.watch<FilteredCarsCubit>();
