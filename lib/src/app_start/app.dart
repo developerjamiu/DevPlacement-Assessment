@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
-import 'package:permission_handler/permission_handler.dart';
 
+import '../contents/utilities/external_storage.dart';
+import '../contents/utilities/permission_handler.dart';
+import '../contents/utilities/csv_file.dart';
 import '../features/cars/cubit/cars_cubit.dart';
 import '../features/cars/cubit/filtered_cars_cubit.dart';
 import '../features/cars/repository/car_repository.dart';
@@ -16,8 +18,9 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<CarsCubit>(
-          create: (context) =>
-              CarsCubit(CarRepository(Permission.storage))..getCars(),
+          create: (context) => CarsCubit(
+              CarRepository(PermissionHandler(), ExternalStorage(), CSVFile()))
+            ..getCars(),
         ),
         BlocProvider<UsersCubit>(
           create: (context) => UsersCubit(UserRepository(Client()))..getUsers(),
