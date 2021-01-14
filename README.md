@@ -13,12 +13,12 @@ The application is built with Flutter - A Cross Platform Mobile Technology
 ## Screenshots
 
 ### Main
-![cars_view](https://user-images.githubusercontent.com/50176100/104629453-d2b51580-5699-11eb-848b-8fab1aeb9f3c.jpeg)  
-![user_view](https://user-images.githubusercontent.com/50176100/104629448-d183e880-5699-11eb-8f72-09b8a10e2987.jpeg)  
-![user_detail_view](https://user-images.githubusercontent.com/50176100/104629444-cfba2500-5699-11eb-9372-96d0fd9d19f9.jpeg)  
+![cars_view](https://user-images.githubusercontent.com/50176100/104629453-d2b51580-5699-11eb-848b-8fab1aeb9f3c.jpeg)
+![user_view](https://user-images.githubusercontent.com/50176100/104629448-d183e880-5699-11eb-8f72-09b8a10e2987.jpeg)
+![user_detail_view](https://user-images.githubusercontent.com/50176100/104629444-cfba2500-5699-11eb-9372-96d0fd9d19f9.jpeg)
 
 ### Extras
-![car_info_view](https://user-images.githubusercontent.com/50176100/104629455-d34dac00-5699-11eb-8ef6-5864a5563dfa.jpeg)  
+![car_info_view](https://user-images.githubusercontent.com/50176100/104629455-d34dac00-5699-11eb-8ef6-5864a5563dfa.jpeg)
 ![filter_view](https://user-images.githubusercontent.com/50176100/104629449-d21c7f00-5699-11eb-8289-243003f0038b.jpeg)  
 
 ## Install Flutter
