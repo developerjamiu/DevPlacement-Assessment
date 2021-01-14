@@ -20,13 +20,17 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json['id'],
-        avatar: json['avatar'],
-        fullName: json['fullName'],
-        createdAt: HttpDate.parse(json['createdAt']),
-        gender: json['gender'],
-        colors: json['colors'].cast<String>(),
-        countries: json['countries'].cast<String>(),
+        id: json['id'] ?? '',
+        avatar: json['avatar'] ??
+            'https://randomuser.me/api/portraits/women/55.jpg',
+        fullName: json['fullName'] ?? 'No mame',
+        createdAt: json['createdAt'] == null
+            ? DateTime.now()
+            : HttpDate.parse(json['createdAt']),
+        gender: json['gender'] ?? 'Male',
+        colors: json['colors'] == null ? [] : json['colors'].cast<String>(),
+        countries:
+            json['countries'] == null ? [] : json['countries'].cast<String>(),
       );
 
   Map<String, dynamic> toJson() => {

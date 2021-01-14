@@ -32,6 +32,7 @@ class App extends StatelessWidget {
           return BlocProvider(
             create: (context) => FilteredCarsCubit(_cubit),
             child: MaterialApp(
+              debugShowCheckedModeBanner: false,
               title: 'Jamiu Okanlawon',
               home: HomeView(),
               theme: ThemeData(

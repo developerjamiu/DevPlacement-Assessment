@@ -21,7 +21,7 @@ class UserRepository {
 
       if (response.statusCode == 200) {
         dynamic usersResponse = json.decode(response.body);
-
+        print(usersResponse);
         users =
             List<User>.from(usersResponse.map((user) => User.fromJson(user)));
       } else {
