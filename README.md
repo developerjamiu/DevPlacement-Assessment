@@ -10,6 +10,10 @@ The application is built with Flutter - A Cross Platform Mobile Technology
 
 ## To test (Manually)
 
+## Link to video demo
+
+https://drive.google.com/file/d/10IjTbW5krsxKhW8rPeohkyCYI7fUQTLC/view?usp=drivesdk
+
 ## Screenshots
 
 ### Main
