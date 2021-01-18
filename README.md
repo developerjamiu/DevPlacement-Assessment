@@ -8,8 +8,6 @@ An Application showing a list of cars by cars onwers in the united states
 
 The application is built with Flutter - A Cross Platform Mobile Technology
 
-## To test (Manually)
-
 ## Link to video demo
 
 https://drive.google.com/file/d/10IjTbW5krsxKhW8rPeohkyCYI7fUQTLC/view?usp=drivesdk
@@ -24,6 +22,8 @@ https://drive.google.com/file/d/10IjTbW5krsxKhW8rPeohkyCYI7fUQTLC/view?usp=drive
 ### Extras
 ![car_info_view](https://user-images.githubusercontent.com/50176100/104629455-d34dac00-5699-11eb-8ef6-5864a5563dfa.jpeg)
 ![filter_view](https://user-images.githubusercontent.com/50176100/104629449-d21c7f00-5699-11eb-8289-243003f0038b.jpeg)  
+
+## To test (Manually)
 
 ## Install Flutter
 
