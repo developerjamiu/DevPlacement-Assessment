@@ -8,6 +8,10 @@ An Application showing a list of cars by cars onwers in the united states
 
 The application is built with Flutter - A Cross Platform Mobile Technology
 
+## !IMPORTANT: You need the following file in a onwers folder (created directly in the root of your mobile device) for the first page to load the list of cars.
+https://drive.google.com/file/d/1giBv3pK6qbOPo0Y02H-wjT9ULPksfBCm/view
+Check here (under mobile assessment) for more detail: https://docs.google.com/document/d/10dYI-jsaG_ou2tFzRBmB6Fi84aV1oVNE3UPAislo_fw/edit
+
 ## Link to video demo
 
 https://drive.google.com/file/d/10IjTbW5krsxKhW8rPeohkyCYI7fUQTLC/view?usp=drivesdk
